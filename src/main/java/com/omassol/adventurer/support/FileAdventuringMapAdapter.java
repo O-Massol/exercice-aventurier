@@ -4,19 +4,27 @@ import com.omassol.adventurer.model.AdventuringMap;
 import com.omassol.adventurer.model.Position;
 import com.omassol.adventurer.model.TerrainType;
 import com.omassol.adventurer.support.errors.InvalidAdventuringMapFileException;
-import com.omassol.adventurer.support.errors.InvalidPlannedTravelFileException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.stream.IntStream;
 
 public class FileAdventuringMapAdapter {
 
     public AdventuringMap adapt(Path filePath) throws InvalidAdventuringMapFileException {
         try {
+            var map = new HashMap<Position, TerrainType>();
             var lines = Files.readAllLines(filePath);
-            return new AdventuringMap(Map.of(new Position(0, 0), TerrainType.MOVEABLE));
+            IntStream.range(0, lines.size()).forEach(
+                i -> {
+                    var line = lines.get(i);
+                    IntStream.range(0, line.length()).forEach(
+                        j -> map.put(new Position(i, j), TerrainType.MOVEABLE)
+                    );
+                }
+            );
+            return new AdventuringMap(map);
         } catch (IOException ioe) {
             throw new InvalidAdventuringMapFileException("File was not readable", ioe);
         }
