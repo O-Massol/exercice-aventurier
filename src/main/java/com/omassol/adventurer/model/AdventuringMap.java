@@ -1,13 +1,13 @@
 package com.omassol.adventurer.model;
 
-import java.util.Set;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AdventuringMap {
 
-    private final Set<Position> positions;
+    private final Map<Position,TerrainType> positions;
 
-    public AdventuringMap(Set<Position> positions) {
+    public AdventuringMap(Map<Position,TerrainType> positions) {
         this.positions = positions;
     }
 
@@ -18,6 +18,7 @@ public class AdventuringMap {
     }
 
     private Position resolveResultingPosition(Position from, MovementCommand direction){
-        return new Position(from.getX()+direction.getX(), from.getY()+direction.getY());
+        var intendedPosition = new Position(from.getX() + direction.getX(), from.getY() + direction.getY());
+        return positions.getOrDefault(intendedPosition,TerrainType.OUT_OF_MAP) == TerrainType.MOVEABLE ? intendedPosition : from;
     }
 }
