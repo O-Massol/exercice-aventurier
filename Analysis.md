@@ -2,7 +2,7 @@
 
 ## Domain
 
-- Map (collection of Positions and TerrainTypes)
+- AdventuringMap (collection of Positions and TerrainTypes)
 - Position
 - TerrainType
 - MovementCommand
