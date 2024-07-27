@@ -14,29 +14,8 @@ Il s'agit de modéliser les déplacements d'un personnage sur une carte.
 #### Carte
 La carte est modélisée à l'aide de caractères dans un fichier texte au format UTF-8 (voir pièce jointe)
 
-Exemple :
-'''
-###    ######    ###
-###      ##      ###
-##     ##  ##     ##
-#      ##  ##      #
-##                ##
-#####          #####
-###### ##  ##  #####
-#     ######     # 
-     ########       
-    ############    
-    ############    
-     ########      #
-#     ######     ##
-###### ##  ## ######
-#####          #####
-##                ##
-#   ## #    # ##   #
-##   ##      ##   ##
-###    #    #    ###
-###    ######    ###
-'''
+Exemple : docs/carte.txt
+
 
 #### Légende
 '#' bois impénétrables
