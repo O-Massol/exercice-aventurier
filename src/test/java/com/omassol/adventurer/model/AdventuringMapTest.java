@@ -3,7 +3,6 @@ package com.omassol.adventurer.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.omassol.adventurer.support.StaticMapProvider;
-import com.omassol.adventurer.support.StaticPlannedTravelProvider;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ class AdventuringMapTest {
     @DisplayName("proceed ; with (1,1) map and (0,0,[]) planned travel ; (0,0) position returned")
     void proceedSimplest(){
         var map = new StaticMapProvider().smallestMap();
-        var position = map.proceed(new StaticPlannedTravelProvider().smallestTravel(new Position(0,0)));
+        var position = map.proceed(new PlannedTravel(new Position(0,0), Stream.empty()));
         assertThat(position).isEqualTo(new Position(0,0));
     }
 
