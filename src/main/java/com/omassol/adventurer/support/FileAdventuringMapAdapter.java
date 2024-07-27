@@ -12,6 +12,8 @@ import java.util.stream.IntStream;
 
 public class FileAdventuringMapAdapter {
 
+    public static final char WOODS_CHARACTER = '#';
+
     public AdventuringMap adapt(Path filePath) throws InvalidAdventuringMapFileException {
         try {
             var map = new HashMap<Position, TerrainType>();
@@ -20,7 +22,7 @@ public class FileAdventuringMapAdapter {
                 i -> {
                     var line = lines.get(i);
                     IntStream.range(0, line.length()).forEach(
-                        j -> map.put(new Position(i, j), TerrainType.MOVEABLE)
+                        j -> map.put(new Position(i, j), line.charAt(j) == WOODS_CHARACTER ? TerrainType.WOODS : TerrainType.MOVEABLE)
                     );
                 }
             );
