@@ -49,4 +49,12 @@ class AdventuringMapTest {
         assertThat(position).isEqualTo(new Position(1,0));
     }
 
+    @Test
+    @DisplayName("proceed ; with (2,2) map having woods on (1,0) and (0,0,[E]) planned travel ; (0,0) position returned")
+    void proceedOnMoveBlockedByWood(){
+        var map = new StaticMapProvider().mapOfSize2By2WithWoodOnX1Y0();
+        var position = map.proceed(new PlannedTravel(new Position(0,0), Stream.of(MovementCommand.EAST)));
+        assertThat(position).isEqualTo(new Position(0,0));
+    }
+
 }
