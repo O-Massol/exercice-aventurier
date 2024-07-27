@@ -1,10 +1,11 @@
 package com.omassol.adventurer.model;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
+@RequiredArgsConstructor
 public class Position {
-
-    public Position(int x, int y) {
-    }
+    private final int x;
+    private final int y;
 }

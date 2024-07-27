@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.omassol.adventurer.support.StaticMapProvider;
 import com.omassol.adventurer.support.StaticPlannedTravelProvider;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +18,12 @@ class AdventuringMapTest {
         assertThat(position).isEqualTo(new Position(0,0));
     }
 
-//    @Test
-//    @DisplayName("proceed ; with (2,2) map and (0,0,[S]) planned travel ; (0,1) position returned")
-//    void proceedOneMove(){
-//    }
+    @Test
+    @DisplayName("proceed ; with (2,2) map and (0,0,[S]) planned travel ; (0,1) position returned")
+    void proceedOneMove(){
+        var map = new StaticMapProvider().emptyMapOfSize2By2();
+        var position = map.proceed(new PlannedTravel(new Position(0,0), Stream.of(MovementCommand.SOUTH)));
+        assertThat(position).isEqualTo(new Position(0,1));
+    }
 
 }
