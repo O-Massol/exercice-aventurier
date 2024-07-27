@@ -22,7 +22,7 @@ public class FileAdventuringMapAdapter {
                 i -> {
                     var line = lines.get(i);
                     IntStream.range(0, line.length()).forEach(
-                        j -> map.put(new Position(i, j), line.charAt(j) == WOODS_CHARACTER ? TerrainType.WOODS : TerrainType.MOVEABLE)
+                        j -> map.put(new Position(j, i), line.charAt(j) == WOODS_CHARACTER ? TerrainType.WOODS : TerrainType.MOVEABLE)
                     );
                 }
             );
