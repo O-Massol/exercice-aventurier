@@ -27,10 +27,18 @@ class AdventuringMapTest {
 
     @Test
     @DisplayName("proceed ; with (2,2) map and (0,0,[SE]) planned travel ; (1,1) position returned")
-    void proceedTwoMoves(){
+    void proceedTwoMovesSouthEast(){
         var map = new StaticMapProvider().emptyMapOfSize2By2();
         var position = map.proceed(new PlannedTravel(new Position(0,0), Stream.of(MovementCommand.SOUTH, MovementCommand.EAST)));
-        assertThat(position).isEqualTo(new Position(0,1));
+        assertThat(position).isEqualTo(new Position(1,1));
+    }
+
+    @Test
+    @DisplayName("proceed ; with (2,2) map and (1,1,[NW]) planned travel ; (0,0) position returned")
+    void proceedTwoMovesNorthWest(){
+        var map = new StaticMapProvider().emptyMapOfSize2By2();
+        var position = map.proceed(new PlannedTravel(new Position(1,1), Stream.of(MovementCommand.NORTH, MovementCommand.WEST)));
+        assertThat(position).isEqualTo(new Position(0,0));
     }
 
 }
