@@ -36,7 +36,7 @@ class ApplicationAcceptanceTest {
         // WHEN The adventurer proceeds with his planned travel on the map
         var result = application.resolveTravel();
         // THEN The adventurer is in a resulting position RP
-        assertThat(result).isEqualTo("(7,5)");
+        assertThat(result).isEqualTo("(5,7)");
     }
 
 }
