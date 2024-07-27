@@ -2,7 +2,9 @@ package com.omassol.adventurer.model;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class AdventuringMap {
 
     private final Map<Position,TerrainType> positions;
