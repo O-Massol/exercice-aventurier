@@ -41,4 +41,12 @@ class AdventuringMapTest {
         assertThat(position).isEqualTo(new Position(0,0));
     }
 
+    @Test
+    @DisplayName("proceed ; with (2,2) map and (0,0,[EE]) planned travel ; (1,0) position returned")
+    void proceedTwoMovesGoingOutOfTheMap(){
+        var map = new StaticMapProvider().emptyMapOfSize2By2();
+        var position = map.proceed(new PlannedTravel(new Position(0,0), Stream.of(MovementCommand.EAST, MovementCommand.EAST)));
+        assertThat(position).isEqualTo(new Position(1,0));
+    }
+
 }
